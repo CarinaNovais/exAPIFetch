@@ -14,7 +14,7 @@ window.onload = function (){
   formdata.append('curso:',`${curso.value}` );
 
 
-      fetch ("..................../",
+      fetch (`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,
       {
         body:formdata,
         method:"post",
@@ -29,7 +29,7 @@ window.onload = function (){
 
     //metodo que lista uma pessoa
     buscar.addEventListener("click", function(){
-      fetch(`......./${id.value}`,{
+      fetch(`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,{
         method:"get",
         mode:'cors',
         cache:'default'
