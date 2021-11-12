@@ -1,7 +1,7 @@
 window.onload = function (){
   const cadastrar = document.querySelector("#cadastrar");
-  const cadastrar = document.querySelector("#nome");
-  const cadastrar = document.querySelector("#curso");
+  const nome = document.querySelector("#nome");
+  const curso = document.querySelector("#curso");
   const buscar = document.querySelector("#buscar");
   const id = document.querySelector("#id");
   const alterar = document.querySelector("#alterar");
@@ -14,7 +14,7 @@ window.onload = function (){
   formdata.append('curso:',`${curso.value}` );
 
 
-      fetch (`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,
+      fetch ("https://www.jussimarleal.com.br/exemplo_api/pessoa",
       {
         body:formdata,
         method:"post",
@@ -30,13 +30,13 @@ window.onload = function (){
     //metodo que lista uma pessoa
     buscar.addEventListener("click", function(){
       fetch(`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,{
-        method:"get",
+        method:"GET",
         mode:'cors',
         cache:'default'
-      }).then(response=>{
-        responde.json().then(data => {
-          nome.value = data ['nome'];
-          curso.value = data ['curso'];
+      }).then(response=>{responde.json()
+          .then(data => {
+          document.querySelector("#nome").value = data ['nome'];
+          document.querySelector("#curso").value = data ['curso'];
         
         })
       })
@@ -45,8 +45,8 @@ window.onload = function (){
     //metodo para deletar o registro 
 
     deletar.addEventListener("click", function(){
-      fetch(`......./${id.value}`,{
-        method:"get",
+      fetch(`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,{
+        method:"GET",
         mode:'cors',
         cache:'default'
       }).then(()=>{
@@ -57,8 +57,8 @@ window.onload = function (){
 
     //metodo para alterar os dados dos registros
     alterar.addEventListener("click", function(){
-       fetch(`......./${id.value}`,{
-        method:"put",
+       fetch(`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,{
+        method:"PUT",
         mode:'cors',
         cache:'default',
         headers:{
