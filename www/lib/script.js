@@ -8,39 +8,35 @@ window.onload = function (){
   const deletar = document.querySelector("#deletar");
 
 //ação de cadastrar uma pessoa e curso
-  cadastrar.addEventListener('click', function() {
-    let formdata = new FormData();
-  formdata.append('nome:', `${nome.value}`);
-  formdata.append('curso:',`${curso.value}` );
+cadastrar.addEventListener("click", function(){
+    let formData = new FormData();
+    formData.append('nome', `${nome.value}`);
+    formData.append('curso', `${curso.value}`);
 
-
-      fetch ("https://www.jussimarleal.com.br/exemplo_api/pessoa",
-      {
-        body:formdata,
-        method:"post",
-        mode:'cors',
-        cache:'default'
-      }).then(()=>{
-        alert("Registro efetuado com suucesso");
-        limparCampos();
-          }
-        );
-    });
+    fetch("https://www.jussimarleal.com.br/exemplo_api/pessoa",
+        {
+            body: formData,
+            method: "post",
+            mode: 'cors',
+            cache: 'default'
+        }).then(alert("Cadastrado"));
+  });
 
     //metodo que lista uma pessoa
-    buscar.addEventListener("click", function(){
-      fetch(`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,{
-        method:"GET",
-        mode:'cors',
-        cache:'default'
-      }).then(response=>{responde.json()
-          .then(data => {
-          document.querySelector("#nome").value = data ['nome'];
-          document.querySelector("#curso").value = data ['curso'];
-        
+ buscar.addEventListener("click", function(){
+    fetch(`https://www.jussimarleal.com.br/exemplo_api/pessoa/${id.value}`,
+    {
+      method:'GET',
+      mode: 'cors',
+      cache: 'default'
+    })
+      .then(response => {response.json()
+        .then(data => {
+          document.querySelector("#nome").value = data['nome'];
+          document.querySelector("#curso").value = data['curso'];
         })
-      })
-    });
+      });
+  });
     
     //metodo para deletar o registro 
 
